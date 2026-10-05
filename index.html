@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaber Motion Stage Controller</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #e8eaed;
+    line-height: 1.6;
+    background: #0d0f13;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 48px 20px 72px; }
+  header { text-align: center; margin-bottom: 28px; }
+  h1 { font-size: 2.2rem; color: #e8eaed; }
+  .sub { font-size: 1.05rem; color: #9aa1ab; margin-top: 8px; }
+  .note {
+    background: #161a20; border: 1px solid #2a2f38; border-radius: 10px;
+    padding: 16px 20px; margin: 24px 0; font-style: italic; color: #c7cdd6;
+  }
+  .shot { width: 100%; border-radius: 10px; border: 1px solid #2a2f38; display: block; }
+  h2 { margin: 36px 0 12px; color: #5b9bff; font-size: 1.4rem; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; color: #c7cdd6; }
+  pre {
+    background: #0f1216; color: #e8eaed; border: 1px solid #2a2f38;
+    border-radius: 10px; padding: 16px 18px; overflow-x: auto; font-size: 0.95rem;
+  }
+  .btn {
+    display: inline-block; margin-top: 24px; padding: 12px 22px;
+    background: #3b82f6; color: #fff; text-decoration: none; font-weight: 600;
+    border-radius: 10px;
+  }
+  .btn:hover { background: #5b9bff; }
+  footer { margin-top: 48px; text-align: center; color: #9aa1ab; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Zaber Motion Stage Controller</h1>
+    <p class="sub">A desktop control panel for linear and rotary motion stages. Python and tkinter.</p>
+  </header>
+
+  <p class="note">This is a simulated stand-in for professional work I can't share publicly.
+  It reuses the same control panel and the same hardware-abstraction approach, wired to a
+  simulator instead of the real stages.</p>
+
+  <img class="shot" src="assets/screenshot.png" alt="The controller running against the simulator">
+
+  <h2>What it does</h2>
+  <ul>
+    <li>One card per axis with Home, Jog, Go to, and an optional speed.</li>
+    <li>Live position readout and a MOVING, IDLE, OFFLINE, or ERROR status pill per axis.</li>
+    <li>Linear axes in mm and rotary in degrees, each with its own travel range and max speed.</li>
+    <li>Out of range moves are refused with a clear message.</li>
+    <li>STOP ALL (also on the Esc key) and a per axis stop.</li>
+    <li>A built-in simulator, so it runs with no hardware attached.</li>
+  </ul>
+
+  <h2>Run it</h2>
+  <p>This is a desktop app, so it runs locally rather than in the browser:</p>
+  <pre>python stage_console.py</pre>
+
+  <a class="btn" id="repo-link" href="#">View the code on GitHub</a>
+
+  <footer>Built with Python and tkinter.</footer>
+</div>
+
+<script>
+  (function () {
+    var host = location.hostname, path = location.pathname.split('/').filter(Boolean);
+    if (host.endsWith('github.io') && path.length) {
+      document.getElementById('repo-link').href =
+        'https://github.com/' + host.split('.')[0] + '/' + path[0];
+    } else {
+      document.getElementById('repo-link').style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
